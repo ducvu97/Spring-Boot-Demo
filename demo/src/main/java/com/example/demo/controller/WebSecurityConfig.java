@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
-public class WebSecurityConfig  {
+public class WebSecurityConfig {
     @Autowired
     UserService userService;
 
@@ -32,13 +32,12 @@ public class WebSecurityConfig  {
         return authProvider;
     }
 
-
     @Bean
-    public SecurityFilterChain FilterChain  (HttpSecurity http) throws Exception {
+    public SecurityFilterChain FilterChain(HttpSecurity http) throws Exception {
         http
                 //.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/input","/signin","/", "/home","/style.css","/img/**", "/js/**", "/webjars/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+                .antMatchers("/input", "/signin", "/", "/home", "/style.css", "/img/**", "/js/**", "/webjars/**").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
                 .anyRequest().authenticated() // Tất cả các request khác đều cần phải xác thực mới được truy cập
                 .and()
                 .formLogin() // Cho phép người dùng xác thực bằng form login
@@ -48,8 +47,9 @@ public class WebSecurityConfig  {
                 .and()
                 .logout() // Cho phép logout
                 .permitAll();
-       return http.build();
+        return http.build();
     }
+
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().antMatchers();

@@ -28,7 +28,7 @@ public class WebController {
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
@@ -43,7 +43,7 @@ public class WebController {
     }
 
     @GetMapping("/signin")
-    public String signin(){
+    public String signin() {
         return "input";
     }
 }
