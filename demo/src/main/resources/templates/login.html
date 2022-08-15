@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="demo">
+    <div class="background">
+        <div class="container-demo">
+            <div class="white">
+                <span class="type-demo">Demo</span>
+            </div>
+        </div>
+        <div class="frames-for-sketch">
+            <span>Frames for Sketch</span>
+        </div>
+        <span class="play-with-sign">
+            <p>Play with Sign-In form to get a feel of how Frames master file works. Every component has its own attributes and styles which can be customized and changed to make a unique experience.</p>
+        </span>
+        <form class="container" method="post" th:action="@{/login}">
+            <div class="flex">
+               <span class="sign-in">
+                   <p>Sign In</p>
+               </span>
+                <div class="close">
+                    <div class="fill">
+                        <div class="icon-close">
+                            <img alt="" src="img/icon-basic-close.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-label-login">
+                <div class="light-grey">
+                    <span class="type">Login</span>
+                </div>
+                <div class="normal">
+                    <input autofocus name="username" required type="text">
+                    <div class="right"></div>
+                    <div class="check-circle">
+                        <img alt="" src="img/icon-basic-check-circle.svg">
+                    </div>
+                </div>
+            </div>
+            <div class="input-label-password">
+                <div class="light-grey">
+                    <span class="type">Password</span>
+                </div>
+                <div class="normal">
+                    <input name="password" required type="password">
+                    <div class="right"></div>
+                    <div class="check-circle">
+                        <img alt="" src="img/icon-basic-lock.svg">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-login">
+                <button class="container-login" type="submit">
+                    <span class="type-login">
+                        <p>Login</p>
+                    </span>
+                </button>
+                <div class="right"></div>
+            </div>
+            <div class="btn-login">
+                <div class="btn-login-with-fb">
+                    <div class="top"></div>
+                    <span class="type-login">
+                        <p>Continue with Facebook</p>
+                        <div class="icon-fb">
+                        <img alt="" src="img/icon-basic-social-facebook.svg">
+                        </div>
+                    </span>
+                </div>
+                <div class="right"></div>
+            </div>
+            <span class="forgot-your-password"><p>Forgot your password?</p></span>
+        </form>
+        <div class="logo-wolf">
+            <img alt="" src="img/data-logo-robowolf.svg">
+        </div>
+        <div>
+            <span class="f">
+                <p> Visit robowolf.net/frames for the full version and additional information.</p>
+            </span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
