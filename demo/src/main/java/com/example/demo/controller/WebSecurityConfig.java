@@ -21,13 +21,7 @@ public class WebSecurityConfig  {
         // Password encoder, để Spring Security sử dụng mã hóa mật khẩu người dùng
         return new BCryptPasswordEncoder();
     }
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth)
-//            throws Exception {
-//        auth.userDetailsService(userService) // Cung cáp userservice cho spring security
-//                .passwordEncoder(passwordEncoder()); // cung cấp password encoder
-//    }
-//
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

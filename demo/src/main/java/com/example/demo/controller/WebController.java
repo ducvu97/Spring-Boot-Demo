@@ -32,8 +32,6 @@ public class WebController {
         return "login";
     }
 
-
-
     @PostMapping("/signin")
     public String save(@RequestParam("username") String username, @RequestParam("password") String password) {
         User n = new User();

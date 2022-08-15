@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
    @Autowired
    UserRepository userRepository;
+
     public UserDetails loadUserByUsername(String username)  {
         User user = userRepository.findByUsername(username);
         if (user == null) {
