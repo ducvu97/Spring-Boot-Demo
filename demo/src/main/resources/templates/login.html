@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Demo</title>
-    <link rel="stylesheet" href="style.css">
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="demo">
@@ -19,7 +22,7 @@
         <span class="play-with-sign">
             <p>Play with Sign-In form to get a feel of how Frames master file works. Every component has its own attributes and styles which can be customized and changed to make a unique experience.</p>
         </span>
-        <form class="container" th:action="@{/login}" method="post">
+        <form class="container" method="post" th:action="@{/login}">
             <div class="flex">
                <span class="sign-in">
                    <p>Sign In</p>
@@ -27,7 +30,7 @@
                 <div class="close">
                     <div class="fill">
                         <div class="icon-close">
-                            <img src="img/icon-basic-close.svg" alt="">
+                            <img alt="" src="img/icon-basic-close.svg">
                         </div>
                     </div>
                 </div>
@@ -37,10 +40,10 @@
                     <span class="type">Login</span>
                 </div>
                 <div class="normal">
-                    <input type="text" name="username" required autofocus>
+                    <input autofocus name="username" required type="text">
                     <div class="right"></div>
                     <div class="check-circle">
-                        <img src="img/icon-basic-check-circle.svg" alt="">
+                        <img alt="" src="img/icon-basic-check-circle.svg">
                     </div>
                 </div>
             </div>
@@ -49,15 +52,15 @@
                     <span class="type">Password</span>
                 </div>
                 <div class="normal">
-                    <input type="password" name="password" required>
+                    <input name="password" required type="password">
                     <div class="right"></div>
                     <div class="check-circle">
-                        <img src="img/icon-basic-lock.svg" alt="">
+                        <img alt="" src="img/icon-basic-lock.svg">
                     </div>
                 </div>
             </div>
             <div class="btn-login">
-                <button type="submit"  class="container-login" >
+                <button class="container-login" type="submit">
                     <span class="type-login">
                         <p>Login</p>
                     </span>
@@ -70,7 +73,7 @@
                     <span class="type-login">
                         <p>Continue with Facebook</p>
                         <div class="icon-fb">
-                        <img src="img/icon-basic-social-facebook.svg" alt="">
+                        <img alt="" src="img/icon-basic-social-facebook.svg">
                         </div>
                     </span>
                 </div>
@@ -81,7 +84,7 @@
             </span>
         </form>
         <div class="logo-wolf">
-            <img src="img/data-logo-robowolf.svg" alt="">
+            <img alt="" src="img/data-logo-robowolf.svg">
         </div>
         <div>
             <span class="f">
