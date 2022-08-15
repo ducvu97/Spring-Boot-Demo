@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <path id="ypb67oo0ua" d="M0 0H22V22H0z"/>
+        <path id="v17gyeoz3b" d="M11 0c6.072 0 11 4.928 11 11s-4.928 11-11 11S0 17.072 0 11 4.928 0 11 0zM9.587 12.667L6.961 9.783c-.4-.438-1.047-.443-1.452-.01-.408.436-.413 1.15-.01 1.592l3.328 3.653c.39.43 1.023.444 1.43.033l6.546-6.604c.42-.423.443-1.137.052-1.592-.388-.45-1.036-.475-1.451-.056l-5.817 5.868z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#FCFCFC" stroke="#D3DCE6" stroke-width="5" d="M0-628.5c-53.848 0-97.5 43.652-97.5 97.5V754c0 53.848 43.652 97.5 97.5 97.5h1450c53.848 0 97.5-43.652 97.5-97.5V-531c0-53.848-43.652-97.5-97.5-97.5H0z"/>
+        <g>
+            <g transform="translate(1.000000, 1.000000)">
+                <mask id="3jresj74kc" fill="#fff">
+                    <use xlink:href="#v17gyeoz3b"/>
+                </mask>
+                <use fill="#000A12" fill-rule="nonzero" xlink:href="#v17gyeoz3b"/>
+                <g mask="url(#3jresj74kc)">
+                    <g>
+                        <path fill="#13cb65" d="M0 0H24V24H0z" transform="translate(-1.000000, -1.000000)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
