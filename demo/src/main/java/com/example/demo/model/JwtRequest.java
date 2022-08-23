@@ -1,29 +1,24 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "user")
+public class JwtRequest implements Serializable {
 
-public class UserDao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private static final long serialVersionUID = 5926468583005150707L;
 
-    @Column(nullable = false, unique = true)
     private String username;
     private String password;
 
-    public long getId() {
-        return id;
+    public JwtRequest() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public JwtRequest(String username, String password) {
+        this.setUsername(username);
+        this.setPassword(password);
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -31,7 +26,7 @@ public class UserDao {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
