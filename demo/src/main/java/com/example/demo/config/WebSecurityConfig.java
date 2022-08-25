@@ -62,7 +62,6 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/api/login", "/api/register").permitAll()
                 .antMatchers("/api/**").authenticated()
-                .anyRequest().permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

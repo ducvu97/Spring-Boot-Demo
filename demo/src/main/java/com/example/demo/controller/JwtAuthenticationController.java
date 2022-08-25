@@ -30,9 +30,6 @@ public class JwtAuthenticationController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
-
     // authenticate
     @PostMapping("/api/login")
     public ResponseEntity<JwtResponse> login(@RequestBody UserDto userDto) {
@@ -49,11 +46,9 @@ public class JwtAuthenticationController {
     }
 
     @GetMapping("/api/users")
-    public ResponseEntity<List<UserDao>> getUsers() {
-        List<UserDao> users = userRepository.findAll();
-        return ResponseEntity.ok(users);
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok(userService.getUsers());
     }
-
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
