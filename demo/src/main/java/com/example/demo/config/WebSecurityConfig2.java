@@ -36,8 +36,8 @@ public class WebSecurityConfig2 {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/input", "/home").permitAll()
-                .antMatchers("/").authenticated()
+                .antMatchers("/register", "/home").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
