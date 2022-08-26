@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.UserDao;
+import com.example.demo.model.UserDto;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,8 +36,8 @@ public class WebController {
     }
 
     @PostMapping("/register")
-    public String saveRegister(@ModelAttribute UserDao userDao) {
-        userService.save(userDao);
+    public String saveRegister(@ModelAttribute UserDto userDto) {
+        userService.save(userDto);
         return "home";
     }
 }
