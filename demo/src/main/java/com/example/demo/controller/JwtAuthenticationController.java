@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.config.JwtTokenUtil;
 import com.example.demo.model.JwtRequest;
 import com.example.demo.model.JwtResponse;
 import com.example.demo.model.UserDao;
 import com.example.demo.model.UserDto;
 import com.example.demo.respository.UserRepository;
-import com.example.demo.service.jwtUserService;
+import com.example.demo.service.JwtTokenUtilService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,16 +20,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private JwtTokenUtilService jwtTokenUtilService;
 
     @Autowired
-    private jwtUserService userService;
+    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -42,7 +41,7 @@ public class JwtAuthenticationController {
         );
         UserDetails userDetails = userService.loadUserByUsername(userDto.getUsername());
 
-        String token = jwtTokenUtil.generateToken(userDetails);
+        String token = jwtTokenUtilService.generateToken(userDetails);
 
         JwtResponse response = new JwtResponse(token);
 
@@ -63,7 +62,7 @@ public class JwtAuthenticationController {
 
         final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
 
-        final String token = jwtTokenUtil.generateToken(userDetails);
+        final String token = jwtTokenUtilService.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

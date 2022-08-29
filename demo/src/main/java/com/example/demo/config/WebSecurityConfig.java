@@ -1,8 +1,7 @@
 package com.example.demo.config;
 
-import com.example.demo.service.jwtUserService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -26,12 +25,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig {
     @Autowired
-    jwtUserService userService;
+    UserService userService;
 
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    @Qualifier("jwtUserService")
     @Autowired
     private UserDetailsService jwtUserDetailsService;
 
@@ -76,5 +74,4 @@ public class WebSecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().antMatchers("/style.css", "/img/*");
     }
-
 }
