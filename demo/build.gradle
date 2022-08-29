@@ -30,6 +30,7 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
 tasks.withType(Test){
     scanForTestClasses=false
     include"**/*Test.class"
