@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.User;
-import com.example.demo.model.UserRepository;
+import com.example.demo.model.UserDao;
+import com.example.demo.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,9 +17,14 @@ public class WebController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = {"/", "/home"})
-    public String homepage() {
-        return "home";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String signin() {
+        return "input";
     }
 
     @GetMapping("/hello")
@@ -27,23 +32,13 @@ public class WebController {
         return "hello";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @PostMapping("/signin")
+    @PostMapping("/register")
     public String save(@RequestParam("username") String username, @RequestParam("password") String password) {
-        User n = new User();
+        UserDao n = new UserDao();
         n.setUsername(username);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         n.setPassword(passwordEncoder.encode(password));
         userRepository.save(n);
         return "home";
-    }
-
-    @GetMapping("/signin")
-    public String signin() {
-        return "input";
     }
 }

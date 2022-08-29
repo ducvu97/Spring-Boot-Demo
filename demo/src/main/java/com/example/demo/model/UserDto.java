@@ -1,27 +1,8 @@
 package com.example.demo.model;
 
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "user")
-
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @Column(nullable = false, unique = true)
+public class UserDto {
     private String username;
     private String password;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

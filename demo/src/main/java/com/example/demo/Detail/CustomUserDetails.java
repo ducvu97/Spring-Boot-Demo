@@ -1,6 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.Detail;
 
-
+import com.example.demo.model.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,9 +11,9 @@ import java.util.Collections;
 
 public class CustomUserDetails implements UserDetails {
     @Autowired
-    User user;
+    UserDao user;
 
-    public CustomUserDetails(User user) {
+    public CustomUserDetails(UserDao user) {
         this.user = user;
     }
 
