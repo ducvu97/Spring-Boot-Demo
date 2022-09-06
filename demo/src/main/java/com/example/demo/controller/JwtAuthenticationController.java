@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.JwtRequest;
 import com.example.demo.model.JwtResponse;
+import com.example.demo.model.UserDao;
 import com.example.demo.model.UserDto;
 import com.example.demo.service.JwtTokenUtilService;
 import com.example.demo.service.UserService;
@@ -43,7 +43,7 @@ public class JwtAuthenticationController {
 
     // authenticate
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> login(@Valid@RequestBody UserDto userDto) {
+    public ResponseEntity<JwtResponse> login(@Valid @RequestBody UserDto userDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(userDto.getUsername(), userDto.getPassword())
         );
@@ -56,30 +56,18 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(response);
     }
 
-    @ApiOperation(value = "Xem danh sách User", response = List.class)
     @GetMapping("/getUsers")
-    public ResponseEntity<?> getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
-    }
-
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-
-        final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
-
-        final String token = jwtTokenUtilService.generateToken(userDetails);
-
-        return ResponseEntity.ok(new JwtResponse(token));
+    public ResponseEntity<List<UserDao>> getUsers() {
+        List<UserDao> userDtoList = userService.getUsers();
+        return ResponseEntity.ok(userDtoList);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser( @ApiParam(value = "Đối tượng User cần tạo mới", required = true) @Valid @RequestBody UserDto user) throws Exception {
-        return ResponseEntity.ok(userService.save(user));
+    public ResponseEntity<UserDao> saveUser(@ApiParam(value = "Đối tượng User cần tạo mới", required = true) @Valid @RequestBody UserDto userDto) throws Exception {
+        return ResponseEntity.ok(userService.save(userDto));
     }
 
-    private void authenticate(String username, String password) throws Exception {
+    private void login(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
