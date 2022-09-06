@@ -1,13 +1,22 @@
 package com.example.demo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
+//@ApiModel(value = "User model")
 
 public class UserDao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //@ApiModelProperty(notes = "The database generated User ID")
     private long id;
 
     @Column(nullable = false, unique = true)

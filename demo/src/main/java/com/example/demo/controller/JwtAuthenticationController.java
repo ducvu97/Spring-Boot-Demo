@@ -2,11 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.model.JwtRequest;
 import com.example.demo.model.JwtResponse;
-import com.example.demo.model.UserDao;
 import com.example.demo.model.UserDto;
-import com.example.demo.respository.UserRepository;
 import com.example.demo.service.JwtTokenUtilService;
 import com.example.demo.service.UserService;
+import io.swagger.annotations.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,9 +17,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/api")
+@Api("User APIs")
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -30,9 +34,16 @@ public class JwtAuthenticationController {
     @Autowired
     private UserService userService;
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Thành công"),
+            @ApiResponse(code = 401, message = "Chưa xác thực"),
+            @ApiResponse(code = 403, message = "Truy cập bị cấm"),
+            @ApiResponse(code = 404, message = "Không tìm thấy")
+    })
+
     // authenticate
-    @PostMapping("/api/login")
-    public ResponseEntity<JwtResponse> login(@RequestBody UserDto userDto) {
+    @PostMapping("/login")
+    public ResponseEntity<JwtResponse> login(@Valid@RequestBody UserDto userDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(userDto.getUsername(), userDto.getPassword())
         );
@@ -45,7 +56,8 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/api/users")
+    @ApiOperation(value = "Xem danh sách User", response = List.class)
+    @GetMapping("/getUsers")
     public ResponseEntity<?> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
@@ -62,8 +74,8 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @RequestMapping(value = "/api/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody UserDto user) throws Exception {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<?> saveUser( @ApiParam(value = "Đối tượng User cần tạo mới", required = true) @Valid @RequestBody UserDto user) throws Exception {
         return ResponseEntity.ok(userService.save(user));
     }
 
