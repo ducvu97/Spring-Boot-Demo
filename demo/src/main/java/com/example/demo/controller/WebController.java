@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.UserDao;
 import com.example.demo.model.UserDto;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,8 @@ public class WebController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        UserDao userDao = new UserDao();
-        model.addAttribute("userDao", userDao);
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDao", userDto);
         return "input";
     }
 
