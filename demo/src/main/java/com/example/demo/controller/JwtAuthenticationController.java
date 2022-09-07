@@ -41,7 +41,6 @@ public class JwtAuthenticationController {
             @ApiResponse(code = 404, message = "Không tìm thấy")
     })
 
-    // authenticate
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@Valid @RequestBody UserDto userDto) {
         Authentication authentication = authenticationManager.authenticate(
@@ -63,7 +62,7 @@ public class JwtAuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<UserDao> saveUser(@ApiParam(value = "Đối tượng User cần tạo mới", required = true) @Valid @RequestBody UserDto userDto) throws Exception {
+    public ResponseEntity<UserDao> saveUser(@ApiParam(value = "New object to creat ", required = true) @Valid @RequestBody UserDto userDto) throws Exception {
         return ResponseEntity.ok(userService.save(userDto));
     }
 
