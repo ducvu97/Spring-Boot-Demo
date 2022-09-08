@@ -55,3 +55,7 @@ bootJar {
     mainClass = 'com.example.demo.DemoApplication'
 }
 
+jar {
+    baseName = 'app'
+    version = '0.0.1'
+}
