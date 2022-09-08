@@ -38,3 +38,20 @@ tasks.withType(Test){
     scanForTestClasses=false
     include"**/*Test.class"
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.example.demo.DemoApplication'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+bootJar {
+    mainClassName = 'com.example.demo.DemoApplication'
+}
+
