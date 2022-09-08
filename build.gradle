@@ -52,6 +52,6 @@ jar {
 }
 
 bootJar {
-    mainClassName = 'com.example.demo.DemoApplication'
+    mainClass = 'com.example.demo.DemoApplication'
 }
 
