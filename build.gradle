@@ -34,9 +34,9 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-tasks.withType(Test){
-    scanForTestClasses=false
-    include"**/*Test.class"
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class"
 }
 
 jar {
@@ -56,5 +56,6 @@ bootJar {
 }
 
 jar {
-    enabled = false
+    baseName = 'app'
+    version = '0.0.1'
 }
