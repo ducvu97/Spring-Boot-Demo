@@ -58,3 +58,7 @@ bootJar {
 jar {
     enabled = true
 }
+
+tasks.withType(Jar) {
+    destinationDir = file("$rootDir/build/lib")
+}
