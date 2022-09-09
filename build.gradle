@@ -45,7 +45,3 @@ jar {
 bootJar {
     mainClass = 'com.example.demo.DemoApplication'
 }
-
-jar {
-    enabled = false
-}
