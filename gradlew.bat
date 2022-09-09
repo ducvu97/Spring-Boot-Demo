@@ -89,7 +89,3 @@ exit /b %EXIT_CODE%
 if "%OS%"=="Windows_NT" endlocal
 
 :omega
-
-./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jar
-
-$ gradlew build && java -jar build/libs/gs-rest-service-0.1.0.jar
