@@ -30,15 +30,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
-tasks.withType(Test) {
-    scanForTestClasses = false
-    include "**/*Test.class"
-}
-
 jar {
     manifest {
         attributes(
@@ -56,9 +47,5 @@ bootJar {
 }
 
 jar {
-    enabled = true
-}
-
-tasks.withType(Jar) {
-    destinationDir = file("$rootDir/build/lib")
+    enabled = false
 }
