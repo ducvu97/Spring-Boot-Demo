@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "user_")
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "User model")
@@ -19,9 +19,10 @@ public class UserDao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ApiModelProperty(notes = "The database generated User ID")
+    @Column(name="user_id")
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true,name="user_name")
     private String username;
     private String password;
 
